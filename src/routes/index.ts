@@ -6,6 +6,6 @@ import { especificationRouter } from "./specifications.routes";
 const Routes = Router();
 
 Routes.use("/categories", categoriesRoute);
-Routes.use("/specification", especificationRouter);
+Routes.use("/specifications", especificationRouter);
 
 export { Routes };
