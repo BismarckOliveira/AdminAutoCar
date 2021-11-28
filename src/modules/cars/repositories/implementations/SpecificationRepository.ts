@@ -7,27 +7,27 @@ import {
 } from "../ISpecificationsRepository";
 
 class SpecificationRepository implements ISpecificationsRepository {
-  private specifications: Repository<Specification>;
+  private repository: Repository<Specification>;
 
   constructor() {
-    this.specifications = getRepository(Specification);
+    this.repository = getRepository(Specification);
   }
 
   async create({ description, name }: ISpecificationDTO): Promise<void> {
-    const specification = this.specifications.create({
+    const specification = this.repository.create({
       name,
       description,
     });
 
-    await this.specifications.save(specification);
+    await this.repository.save(specification);
   }
   async list(): Promise<Specification[]> {
-    const specifications = await this.specifications.find();
+    const specifications = await this.repository.find();
     return specifications;
   }
 
   async findByName(name: string): Promise<Specification> {
-    const specification = await this.specifications.findOne({ name });
+    const specification = await this.repository.findOne({ name });
     return specification;
   }
 }
