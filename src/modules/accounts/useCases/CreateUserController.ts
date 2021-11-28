@@ -11,7 +11,6 @@ class CreateUserController {
     await createUserUseCase.execute({
       name,
       email,
-      username,
       driver_license,
       password,
     });
