@@ -4,7 +4,6 @@ import { CreateSpecificationController } from "../modules/cars/useCases/createSp
 import { ListSpecificationsController } from "../modules/cars/useCases/listSpecifications/ListSpecificationsController";
 
 const especificationRouter = Router();
-
 const createSpecificationController = new CreateSpecificationController();
 const listSpecificationsController = new ListSpecificationsController();
 
