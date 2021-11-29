@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { ColumnMetadata } from "typeorm/metadata/ColumnMetadata";
 import { v4 as uuidV4 } from "uuid";
 
 @Entity("users")
@@ -20,6 +21,9 @@ class User {
 
   @Column()
   isAdmin: boolean;
+
+  @Column()
+  avatar: string;
 
   @CreateDateColumn()
   created_at: Date;
