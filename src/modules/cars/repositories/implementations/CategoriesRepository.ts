@@ -31,6 +31,10 @@ class CategoriesRepository implements ICategoriesRepository {
     const category = await this.repository.findOne({ name });
     return category;
   }
+
+  async remove(category: Category): Promise<void> {
+    await this.repository.remove(category);
+  }
 }
 
 export { CategoriesRepository };
