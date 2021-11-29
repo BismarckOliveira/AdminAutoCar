@@ -4,6 +4,7 @@ import { Category } from "../../entities/Category";
 import {
   ICreateCategoryDTO,
   ICategoriesRepository,
+  IUpdateCategoryDTO,
 } from "../ICategoriesRepository";
 
 class CategoriesRepository implements ICategoriesRepository {
@@ -32,8 +33,17 @@ class CategoriesRepository implements ICategoriesRepository {
     return category;
   }
 
+  async findById(id: string): Promise<Category> {
+    const category = await this.repository.findOne(id);
+    return category;
+  }
+
   async remove(category: Category): Promise<void> {
     await this.repository.remove(category);
+  }
+
+  async updateName({ name, id }: IUpdateCategoryDTO): Promise<void> {
+    await this.repository.update(id, { name });
   }
 }
 

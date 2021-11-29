@@ -6,6 +6,7 @@ import { CreateCategoryController } from "../modules/cars/useCases/createCategor
 import { DeleteCategoryController } from "../modules/cars/useCases/deleteCategory/DeleteCategoryController";
 import { ImportCategoryController } from "../modules/cars/useCases/importCategory/ImportCategoryController";
 import { ListCategoriesController } from "../modules/cars/useCases/listCategories/ListCategoriesController";
+import { UpdateCotegoryController } from "../modules/cars/useCases/updateCategory/UpdateCategoryController";
 
 const upload = multer({
   dest: "./tmp",
@@ -15,6 +16,7 @@ const createCategoryController = new CreateCategoryController();
 const importCategoryController = new ImportCategoryController();
 const listCategoriesController = new ListCategoriesController();
 const deleteCategoriesController = new DeleteCategoryController();
+const updateCotegoryController = new UpdateCotegoryController();
 
 const categoriesRoute = Router();
 categoriesRoute.post("/", createCategoryController.handle);
@@ -30,6 +32,8 @@ categoriesRoute.delete(
   ensureAuthenticated,
   deleteCategoriesController.handle
 );
+
+categoriesRoute.put("/", ensureAuthenticated, updateCotegoryController.handle);
 
 categoriesRoute.get("/", listCategoriesController.handler);
 
