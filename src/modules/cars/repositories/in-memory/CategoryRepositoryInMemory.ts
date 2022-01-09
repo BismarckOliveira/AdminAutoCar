@@ -9,11 +9,13 @@ class CategoryRepositoryInMemory implements ICategoriesRepository {
   categories: Category[] = [];
 
   async create({ description, name }: ICreateCategoryDTO): Promise<void> {
-    this.categories.push({
+    const category = new Category();
+
+    Object.assign(category, {
       name,
       description,
-      created_at: new Date(),
     });
+    this.categories.push(category);
   }
 
   async list(): Promise<Category[]> {
