@@ -1,5 +1,4 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
-import { ColumnMetadata } from "typeorm/metadata/ColumnMetadata";
 import { v4 as uuidV4 } from "uuid";
 
 @Entity("users")
