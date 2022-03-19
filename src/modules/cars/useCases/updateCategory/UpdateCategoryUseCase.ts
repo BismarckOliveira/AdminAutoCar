@@ -1,6 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@shared/errors/AppError";
+
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
 interface IRequest {
@@ -14,7 +16,7 @@ class UpdateCategoryUseCase {
   constructor(
     @inject("CategoriesRepository")
     private categoryRepository: ICategoriesRepository
-  ) {}
+  ) { }
 
   async execute({ id, name }: IRequest) {
     const category = await this.categoryRepository.findById(id);

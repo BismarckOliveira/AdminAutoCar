@@ -1,6 +1,9 @@
+/* eslint-disable prettier/prettier */
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../errors/AppError";
+import { Car } from "@modules/cars/infra/typeorm/entities/Car";
+import { AppError } from "@shared/errors/AppError";
+
 import { ICarsRepository } from "../../repositories/ICarsRepository";
 
 interface IResquest {
@@ -18,7 +21,7 @@ class CreateCarUseCase {
   constructor(
     @inject("CarsRepository")
     private carsRepository: ICarsRepository
-  ) {}
+  ) { }
   async execute({
     name,
     brand,
@@ -27,7 +30,7 @@ class CreateCarUseCase {
     description,
     fine_amount,
     license_plate,
-  }: IResquest): Promise<void> {
+  }: IResquest): Promise<Car> {
     const carAlreadyExists = await this.carsRepository.findByLicensePlate(
       license_plate
     );
@@ -36,7 +39,7 @@ class CreateCarUseCase {
       throw new AppError("Car already exists!");
     }
 
-    await this.carsRepository.create({
+    const car = await this.carsRepository.create({
       name,
       description,
       daily_rate,
@@ -45,6 +48,8 @@ class CreateCarUseCase {
       brand,
       category_id,
     });
+
+    return car
   }
 }
 

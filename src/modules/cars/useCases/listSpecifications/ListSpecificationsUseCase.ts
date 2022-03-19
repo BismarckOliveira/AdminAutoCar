@@ -1,6 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { inject, injectable } from "tsyringe";
 
-import { Specification } from "../../entities/Specification";
+import { Specification } from "@modules/cars/infra/typeorm/entities/Specification";
+
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
 @injectable()
@@ -8,7 +10,7 @@ class ListSpecificationUseCase {
   constructor(
     @inject("SpecificationRepository")
     private specificationRepository: ISpecificationsRepository
-  ) {}
+  ) { }
 
   async execute(): Promise<Specification[]> {
     const specifications = await this.specificationRepository.list();
