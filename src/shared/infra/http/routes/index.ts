@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { authenticateRoutes } from "./authenticate.routes";
-import { carRoutes } from "./cars.routes";
+import { carsRoutes } from "./cars.routes";
 import { categoriesRoute } from "./categories.routes";
 import { especificationRouter } from "./specifications.routes";
 import { userRoutes } from "./users.routes";
@@ -9,7 +9,7 @@ import { userRoutes } from "./users.routes";
 const router = Router();
 
 router.use("/users", userRoutes);
-router.use("/cars", carRoutes);
+router.use("/cars", carsRoutes);
 router.use("/categories", categoriesRoute);
 router.use("/specifications", especificationRouter);
 router.use(authenticateRoutes);
