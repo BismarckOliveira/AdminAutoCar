@@ -18,6 +18,6 @@ carsRoutes.post(
   createCarController.handle
 );
 
-carsRoutes.get("/", ensureAuthenticated, listCarsController.handler);
+carsRoutes.get("/", listCarsController.handler);
 
 export { carsRoutes };
