@@ -9,14 +9,15 @@ import {
 class CategoryRepositoryInMemory implements ICategoriesRepository {
   categories: Category[] = [];
 
-  async create({ description, name }: ICreateCategoryDTO): Promise<void> {
+  async create({ description, name }: ICreateCategoryDTO): Promise<Category> {
     const category = new Category();
 
-    Object.assign(category, {
+    const newcategory = Object.assign(category, {
       name,
       description,
     });
     this.categories.push(category);
+    return newcategory;
   }
 
   async list(): Promise<Category[]> {
