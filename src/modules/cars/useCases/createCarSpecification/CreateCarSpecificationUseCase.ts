@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+import { inject, injectable } from "tsyringe";
+
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
@@ -8,9 +11,12 @@ interface IRequest {
   specifications_id: string[];
 }
 
+@injectable()
 class CreateCarSpecificationUseCase {
   constructor(
+    @inject('CarsRepository')
     private repository: ICarsRepository,
+    @inject('SpecificationRepository')
     private specificationRepository: ISpecificationsRepository
   ) { }
 
