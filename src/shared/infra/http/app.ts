@@ -1,8 +1,8 @@
+import "reflect-metadata";
 import express, { NextFunction, Response, Request } from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
-import "reflect-metadata";
 import { AppError } from "@shared/errors/AppError";
 import createConection from "@shared/infra/typeorm";
 
